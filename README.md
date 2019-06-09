@@ -231,10 +231,11 @@ In `lib/advanced_jukebox.rb` you'll be building on your jukebox so that it allow
 ### Setting Up the Songs Hash
 
 In `lib/advanced_jukebox.rb` you'll see a `my_songs` hash which has keys of song names and values of the path to of each mp3 file (in `jukebox-cli/audio/Emerald-Park/<file name>.mp3`). 
-
 Change the value of each hash key to reflect the correct file path. For example, if this jukebox-cli directory is in `Users/<your name>/Desktop/Dev/`, the value of the first key should be `Users/<your name>/Desktop/Dev/jukebox-cli/audio/Emerald-Park/01.mp3`. If you're not sure what the path to the file is, cd into the directory of this lab in your terminal and type `pwd`. This stands for "print working directory" and will return the path to your current location. 
 
+
 ### How can a Ruby program play music?
+
 
 It is possible to play audio files via the command line by simply typing `open <path to audio file>`. This will launch your computer's audio player (iTunes, for example). In order to tell Ruby to execute a command line command, we use the following syntax: 
 
