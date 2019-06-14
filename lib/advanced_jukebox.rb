@@ -29,7 +29,7 @@ def play(my_songs)
   user_input = gets.strip
   file = nil
   my_songs.find do |song, path|
-    if user_input.include?(song)
+    if user_input == song
       file = path
     end
   end
