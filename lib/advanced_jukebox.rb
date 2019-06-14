@@ -2,30 +2,44 @@
 #make sure to edit the value of each key to replace < path to this directory >
 #with the correct path to this directory on your computer
 
-# my_songs = {
-# "Go Go GO" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/01.mp3',
-# "LiberTeens" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/02.mp3',
-# "Hamburg" =>  '< path to this directory >/jukebox-cli/audio/Emerald-Park/03.mp3',
-# "Guiding Light" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/04.mp3',
-# "Wolf" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/05.mp3',
-# "Blue" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/06.mp3',
-# "Graduation Failed" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/07.mp3'
+# # my_songs = {
+# "Go Go GO" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/01.mp3',
+# "LiberTeens" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/02.mp3',
+# "Hamburg" =>  '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/03.mp3',
+# "Guiding Light" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/04.mp3',
+# "Wolf" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/05.mp3',
+# "Blue" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/06.mp3',
+# "Graduation Failed" => '/Users/flatironschool/github/jukebox-cli-denver-web-060319/audio/Emerald-Park/07.mp3'
 # }
 
 def help
-  #this method should be the same as in jukebox.rb
-
+  puts "I accept the following commands:
+  - help : displays this help message
+  - list : displays a list of songs you can play
+  - play : lets you choose a song to play
+  - exit_jukebox : exits this program"
 end
-
-
 
 def list(my_songs)
-  #this method is different! Collect the keys of the my_songs hash and 
-  #list the songs by name
+  my_songs.each { |song, path| puts song}
 end
 
-
 def play(my_songs)
+  puts "Please enter your song choice:"
+  user_input = gets.strip
+  file = nil
+  my_songs.find do |song, path|
+    if user_input.include?(song)
+      file = path
+    end
+  end
+  if file != nil
+    puts "Play #{user_input}"
+    `open #{file}`
+  elsif file == nil
+    puts "Invalid choice, please try again"
+  end
+end
   #this method is slightly different!
   #you should still ask the user for input and collect their song choice
   #this time, only allow user's to input a song name
@@ -34,12 +48,38 @@ def play(my_songs)
   #if it is, play the song using the system 'open <file path>' syntax
   #get the file path of the song by looking it up in the my_songs hash
   
-end
 
 def exit_jukebox
+  puts "Goodbye"
   #this method is the same as in jukebox.rb
 end
 
 def run(my_songs)
+  help
+  while true
+    puts "Please enter a command:"
+    user_input = gets.strip
+    
+    case user_input
+    when "list"
+      list(my_songs)
+    when "play"
+      play(my_songs)
+    when "help"
+      help
+    when "exit"
+      exit_jukebox
+      exit
+    end
+  end
+  # if user_input == "exit"
+  #   exit_jukebox && exit
+  # elsif user_input == "list"
+  #   run(my_songs) && list(my_songs)
+  # elsif user_input == "play"
+  #   run(my_songs) && play(my_songs)
+  # elsif user_input == "help"
+  #   run(my_songs) && help
+  # end
   #this method is the same as in jukebox.rb
 end
