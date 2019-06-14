@@ -51,8 +51,8 @@ end
 
 def exit_jukebox
   puts "Goodbye"
-  #this method is the same as in jukebox.rb
 end
+#this method is the same as in jukebox.rb
 
 def run(my_songs)
   help
@@ -72,14 +72,5 @@ def run(my_songs)
       exit
     end
   end
-  # if user_input == "exit"
-  #   exit_jukebox && exit
-  # elsif user_input == "list"
-  #   run(my_songs) && list(my_songs)
-  # elsif user_input == "play"
-  #   run(my_songs) && play(my_songs)
-  # elsif user_input == "help"
-  #   run(my_songs) && help
-  # end
-  #this method is the same as in jukebox.rb
 end
+#this method is the same as in jukebox.rb
