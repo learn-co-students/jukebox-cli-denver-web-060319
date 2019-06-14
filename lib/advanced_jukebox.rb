@@ -27,16 +27,11 @@ end
 def play(my_songs)
   puts "Please enter your song choice:"
   user_input = gets.strip
-  file = nil
-  my_songs.find do |song, path|
-    if user_input == song
-      file = path
-    end
-  end
+  file = my_songs[user_input]
   if file != nil
     puts "Play #{user_input}"
     `open #{file}`
-  elsif file == nil
+  else
     puts "Invalid choice, please try again"
   end
 end
